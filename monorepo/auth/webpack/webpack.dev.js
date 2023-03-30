@@ -3,10 +3,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = devConfig = {
   mode: 'development',
   output: {
-    publicPath: 'http://localhost:3000/',
+    publicPath: 'http://localhost:3001/',
   },
   devServer: {
-    port: 3000,
+    port: 3001,
     historyApiFallback: {
       index: 'index.html',
     },

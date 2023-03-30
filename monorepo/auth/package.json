@@ -1,6 +1,7 @@
 {
-  "name": "container",
+  "name": "auth",
   "version": "1.0.0",
+  "description": "",
   "license": "ISC",
   "scripts": {
     "start": "webpack serve --config webpack/webpack.dev.js"
