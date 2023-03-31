@@ -1,8 +1,10 @@
+const { merge } = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
 const packageJson = require('../package.json');
+const commonConfig = require('./webpack.common');
 
-module.exports = devConfig = {
+const devConfig = {
   mode: 'development',
   output: {
     publicPath: 'http://localhost:3000/',
@@ -13,30 +15,7 @@ module.exports = devConfig = {
       index: 'index.html',
     },
   },
-  module: {
-    rules: [
-      {
-        test: /\.(ts|tsx)$/,
-        use: 'ts-loader',
-        exclude: /node_modules/
-      },
-      {
-        test: /\.m?js$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: [['@babel/preset-react', {"runtime": "automatic"}], '@babel/preset-env'],
-            plugins: ['@babel/plugin-transform-runtime'],
-          },
-        },
-      },
-    ],
-  },
   plugins: [
-    new HtmlWebpackPlugin({
-      template: './public/index.html',
-    }),
     new ModuleFederationPlugin({
       name: 'container',
       remotes: {
@@ -44,8 +23,7 @@ module.exports = devConfig = {
       },
       shared: packageJson.dependencies,
     }),
-  ],
-  resolve: {
-    extensions: ['.tsx', '.ts', '.js']
-  }
+  ]
 }
+
+module.exports = merge(commonConfig, devConfig)

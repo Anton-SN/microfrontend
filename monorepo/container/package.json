@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "license": "ISC",
   "scripts": {
-    "start": "webpack serve --config webpack/webpack.dev.js"
+    "start": "webpack serve --config webpack/webpack.dev.js",
+    "build": "webpack --config webpack/webpack.prod.js"
   },
   "author": "Anton Sivagin",
   "dependencies": {
