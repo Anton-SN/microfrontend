@@ -1,4 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
+const packageJson = require('../package.json');
 
 module.exports = devConfig = {
   mode: 'development',
@@ -34,6 +36,13 @@ module.exports = devConfig = {
   plugins: [
     new HtmlWebpackPlugin({
       template: './public/index.html',
+    }),
+    new ModuleFederationPlugin({
+      name: 'container',
+      remotes: {
+        auth: 'auth@http://localhost:3001/remoteEntry.js',
+      },
+      shared: packageJson.dependencies,
     }),
   ],
   resolve: {
