@@ -4,11 +4,11 @@ on:
   push:
     branches: [ main, init-project ]
     paths:
-      - 'microfrontend/monorepo/container/**'
+      - 'monorepo/container/**'
 
 defaults:
   run:
-    working-directory: 'microfrontend/monorepo/container'
+    working-directory: 'monorepo/container'
 
 
 jobs:
