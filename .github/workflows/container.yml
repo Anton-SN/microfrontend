@@ -10,7 +10,6 @@ defaults:
   run:
     working-directory: 'monorepo/container'
 
-
 jobs:
   build:
     runs-on: ubuntu-latest
