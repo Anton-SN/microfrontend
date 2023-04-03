@@ -1,3 +1,3 @@
-module example/hello
+module microfronted/server
 
 go 1.20
