@@ -2,7 +2,7 @@ name: deploy-auth
 
 on:
   push:
-    branches: [ main, init-project ]
+    branches: [ main ]
     paths:
       - 'monorepo/auth/**'
 
