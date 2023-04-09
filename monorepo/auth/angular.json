@@ -11,17 +11,17 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-builders/custom-webpack:browser",
           "options": {
-            "outputPath": "dist/auth",
-            "index": "public/index.html",
+            "outputPath": "dist",
+            "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
               "zone.js"
             ],
             "tsConfig": "tsconfig.app.json",
             "assets": [
-              "src/assets/favicon.ico"
+              "src/assets"
             ],
             "styles": [
               "src/styles.css"
@@ -42,7 +42,13 @@
                   "maximumError": "4kb"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "none",
+              "customWebpackConfig": {
+                "path": "./webpack/webpack.prod.js",
+                "mergeRules": {
+                  "externals": "replace"
+                }
+              }
             },
             "development": {
               "buildOptimizer": false,
@@ -50,7 +56,19 @@
               "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
-              "namedChunks": true
+              "namedChunks": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.development.ts"
+                }
+              ],
+              "customWebpackConfig": {
+                "path": "./webpack/webpack.dev.js",
+                "mergeRules": {
+                  "externals": "replace"
+                }
+              }
             }
           },
           "defaultConfiguration": "production"
@@ -62,6 +80,7 @@
               "browserTarget": "auth:build:production"
             },
             "development": {
+              "port": 3001,
               "browserTarget": "auth:build:development"
             }
           },
