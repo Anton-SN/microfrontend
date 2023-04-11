@@ -1,3 +1,4 @@
+import "zone.js";
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { enableProdMode } from '@angular/core';
 import { environment } from "./environments/environment";
@@ -9,10 +10,11 @@ const mount = (el: HTMLElement) => {
 }
 
 if (!environment.production) {
-  enableProdMode();
-
   const devRoot = document.getElementById('dev-au-root') as HTMLDivElement;
-  mount(devRoot)
+
+  if (devRoot) {
+    mount(devRoot)
+  }
 }
 
 if (environment.production) {
