@@ -5,6 +5,10 @@ on:
     branches: [ main ]
     paths:
       - 'monorepo/auth/**'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'monorepo/auth/**'
 
 defaults:
   run:
