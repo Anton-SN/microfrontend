@@ -9,9 +9,7 @@ const devConfig = {
   },
   devServer: {
     port: 3001,
-    historyApiFallback: {
-      index: 'index.html',
-    },
+    historyApiFallback: true,
   },
   plugins: [
     new HtmlWebpackPlugin({
