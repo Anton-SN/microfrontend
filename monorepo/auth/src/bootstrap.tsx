@@ -1,18 +1,24 @@
-import React from 'react';
+import React, { } from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter, MemoryRouter } from "react-router-dom";
+import { BrowserRouter, MemoryRouter, NavigateFunction } from "react-router-dom";
 import App from './App';
 
-const mount = (el: HTMLElement, Router = MemoryRouter) => {
+interface MountProps {
+    initPath: string,
+    onNavigate?: NavigateFunction
+}
+
+const mount = (el: HTMLElement, { initPath, onNavigate }: MountProps, Router = MemoryRouter) => {
     const root = ReactDOM.createRoot(el as HTMLElement)
-    root.render(<Router><App /></Router>);
+
+    root.render(<Router initialEntries={[initPath]}><App onNavigate={onNavigate!}/></Router>);
 };
 
 if (process.env.NODE_ENV === 'development') {
     const devRoot = document.getElementById('dev-au-root') as HTMLElement;
 
     if (devRoot) {
-        mount(devRoot, BrowserRouter);
+        mount(devRoot, { initPath: '' }, BrowserRouter);
     }
 }
 
