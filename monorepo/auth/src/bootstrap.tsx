@@ -1,4 +1,4 @@
-import React, { } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, MemoryRouter, NavigateFunction } from "react-router-dom";
 import App from './App';

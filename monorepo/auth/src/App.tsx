@@ -1,5 +1,6 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import { Route, Routes, Link, useLocation, useNavigate } from "react-router-dom";
+import './index.css'
 
 import Login from "./app/pages/login";
 import Signup from "./app/pages/signup";
@@ -32,7 +33,7 @@ const App: React.FC<AppProps> = ({ onNavigate }) => {
 
     return (
     <>
-        <h1>Auth project</h1>
+        <h1 className="text-3xl font-bold underline">Auth project</h1>
             <div>
             <h2>Links</h2>
             <Link to={'auth/login'}>LOGIN</Link>
