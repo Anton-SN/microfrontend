@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Route, Routes, Link, useLocation, useNavigate } from "react-router-dom";
+import { Route, Routes, Link, useLocation, useNavigate, Navigate } from "react-router-dom";
 import './index.css'
 
 import Login from "./app/pages/login";
@@ -34,18 +34,10 @@ const App: React.FC<AppProps> = ({ onNavigate }) => {
     return (
     <>
         <h1 className="text-3xl font-bold underline">Auth project</h1>
-            <div>
-            <h2>Links</h2>
-            <Link to={'auth/login'}>LOGIN</Link>
-            <br/>
-            <Link to={'auth/signup'}>SIGNUP</Link>
-            <br/>
-            <Link to={'/auth/asa'}>HOME</Link>
-            </div>
             <Routes>
                 <Route path="auth/login" element={<Login />}/>
                 <Route path="auth/signup" element={<Signup />}/>
-                <Route path="*" element={<h2>Not found</h2>}/>
+                <Route path="*" element={<Navigate to="auth/login" />}/>
             </Routes>
     </>
     )
