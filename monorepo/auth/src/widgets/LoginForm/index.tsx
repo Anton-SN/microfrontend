@@ -4,6 +4,7 @@ import { Input } from '../../ui';
 
 export const LoginForm: React.FC = () => {
     return <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+        <h1 className="my-5 text-center text-2xl font-bold leading-9 tracking-tight text-white">Login to SUGAR</h1>
         <form className="space-y-6" action="#" method="POST">
             <Input name="email" title="Email address" type="email" onChange={() => { console.log(123)}} />
             <Input name="password" title="Password" type="password" onChange={() => { console.log(123)}} />

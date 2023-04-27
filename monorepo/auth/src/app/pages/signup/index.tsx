@@ -2,7 +2,7 @@ import React from 'react';
 import { SignupForm } from "../../../widgets";
 
 const Singup: React.FC = () => {
-    return <><h2>Sign up page</h2><SignupForm /></>
+    return <div className="h-full flex justify-center items-center"><SignupForm /></div>
 }
 
 export default Singup;

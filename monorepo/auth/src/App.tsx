@@ -32,14 +32,13 @@ const App: React.FC<AppProps> = ({ onNavigate }) => {
     }
 
     return (
-    <>
-        <h1 className="text-3xl font-bold underline">Auth project</h1>
+    <div className="bg-black h-screen">
             <Routes>
                 <Route path="auth/login" element={<Login />}/>
                 <Route path="auth/signup" element={<Signup />}/>
                 <Route path="*" element={<Navigate to="auth/login" />}/>
             </Routes>
-    </>
+    </div>
     )
 }
 
