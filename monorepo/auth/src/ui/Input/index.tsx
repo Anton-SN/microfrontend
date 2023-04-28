@@ -9,7 +9,6 @@ interface Props {
     error?: string,
 }
 export const Input: React.FC<Props> = ({ name, label, register, error, type = 'text'  }) => {
-    console.log(213, register)
     return (
         <div>
             <label htmlFor={name} className="block text-sm font-medium leading-6 text-white">{label}</label>
