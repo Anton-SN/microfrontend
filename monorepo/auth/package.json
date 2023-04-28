@@ -6,7 +6,7 @@
   "scripts": {
     "start": "webpack serve --config webpack/webpack.dev.js",
     "build": "webpack --config webpack/webpack.prod.js",
-    "lint": "eslint --ext .js,.jsx,.ts,.tsx src",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx src"
   },
   "author": "Anton Sivagin",
   "dependencies": {

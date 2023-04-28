@@ -21,7 +21,6 @@ const App: React.FC<AppProps> = ({ onNavigate }) => {
                         navigate(pathname);
                     }
                 };
-                console.log(123)
                 window.addEventListener('[auth] navigated', navigationEventHandler);
 
                 onNavigate(location.pathname)
