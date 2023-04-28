@@ -1,30 +1,30 @@
 import React from 'react';
-import { Link } from "react-router-dom";
-import { SubmitHandler, useForm } from "react-hook-form";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod"
+import { Link } from 'react-router-dom';
+import { type SubmitHandler, useForm } from 'react-hook-form';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod'
 import { Input } from '../../ui';
 
-type Inputs = {
+interface Inputs {
     email: string,
     password: string,
     confirm: string,
-};
+}
 
 const validationSchema = z
     .object({
-        email: z.string().email({ message: "Invalid email address" }),
-        password: z.string().min(6, "Password must contain 6 characters"),
+        email: z.string().email({ message: 'Invalid email address' }),
+        password: z.string().min(6, 'Password must contain 6 characters'),
         confirm: z.string(),
     })
     .refine((data) => data.password === data.confirm, {
-        message: "Passwords don't match",
-        path: ["confirm"], // path of error
+        message: 'Passwords don\'t match',
+        path: ['confirm'], // path of error
     });
 
 export const SignupForm: React.FC = () => {
     const { register, handleSubmit, formState: { errors } } = useForm<Inputs>({ resolver: zodResolver(validationSchema), reValidateMode: 'onChange' });
-    const onSubmit: SubmitHandler<Inputs> = data => console.log(data);
+    const onSubmit: SubmitHandler<Inputs> = data => data;
 
     return <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
         <h1 className="my-5 text-center text-2xl font-bold leading-9 tracking-tight text-white">Sign in to SUGAR</h1>

@@ -1,24 +1,24 @@
 import React from 'react';
-import { Link } from "react-router-dom";
-import { useForm, SubmitHandler } from "react-hook-form";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod"
+import { Link } from 'react-router-dom';
+import { useForm, type SubmitHandler } from 'react-hook-form';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod'
 import { Input } from '../../ui';
 
-type Inputs = {
+interface Inputs {
     email: string,
     password: string,
-};
+}
 
 const validationSchema = z.object({
-    email: z.string().email({ message: "Invalid email address" }),
-    password: z.string().min(6, "Password must contain 6 characters"),
+    email: z.string().email({ message: 'Invalid email address' }),
+    password: z.string().min(6, 'Password must contain 6 characters'),
 });
 
 export const LoginForm: React.FC = () => {
     const { register, handleSubmit, formState: { errors } } = useForm<Inputs>({ resolver: zodResolver(validationSchema), reValidateMode: 'onChange' });
 
-    const onSubmit: SubmitHandler<Inputs> = data => console.log(data);
+    const onSubmit: SubmitHandler<Inputs> = data => data;
 
     return <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm" >
         <h1 className="my-5 text-center text-2xl font-bold leading-9 tracking-tight text-white">Login to SUGAR</h1>

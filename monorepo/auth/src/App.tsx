@@ -1,35 +1,36 @@
 import React, { useEffect } from 'react';
-import { Route, Routes, Link, useLocation, useNavigate, Navigate } from "react-router-dom";
+import { Route, Routes, useLocation, useNavigate, Navigate, type NavigateFunction } from 'react-router-dom';
 import './index.css'
 
-import Login from "./app/pages/login";
-import Signup from "./app/pages/signup";
+import Login from './app/pages/login';
+import Signup from './app/pages/signup';
 
 interface AppProps {
-    onNavigate: (pathname: string) => void,
+    onNavigate?: NavigateFunction,
 }
 
 const App: React.FC<AppProps> = ({ onNavigate }) => {
     const location = useLocation();
     const navigate = useNavigate();
 
-    if(onNavigate) {
         useEffect(() => {
-            const navigationEventHandler = (event: Event) => {
-                const pathname = (event as CustomEvent<string>).detail;
-                if (pathname !== location.pathname && pathname.startsWith('/auth')) {
-                    navigate(pathname);
-                }
-            };
-            window.addEventListener("[auth] navigated", navigationEventHandler);
+            if (onNavigate != null) {
+                const navigationEventHandler = (event: Event): void => {
+                    const pathname = (event as CustomEvent<string>).detail;
+                    if (pathname !== location.pathname && pathname.startsWith('/auth')) {
+                        navigate(pathname);
+                    }
+                };
+                console.log(123)
+                window.addEventListener('[auth] navigated', navigationEventHandler);
 
-            onNavigate(location.pathname)
+                onNavigate(location.pathname)
 
-            return () => {
-                window.removeEventListener("[auth] navigated", navigationEventHandler);
-            };
+                return () => {
+                    window.removeEventListener('[auth] navigated', navigationEventHandler);
+                };
+            }
         }, [location])
-    }
 
     return (
     <div className="bg-black h-screen">
