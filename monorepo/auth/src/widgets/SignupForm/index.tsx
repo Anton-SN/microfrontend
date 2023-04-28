@@ -1,13 +1,25 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import {SubmitHandler, useForm} from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod"
 import { Input } from '../../ui';
 
 type Inputs = {
     email: string,
     password: string,
-    dubPassword: string,
+    confirm: string,
 };
+
+const passwordForm = z
+    .object({
+        password: z.string(),
+        confirm: z.string(),
+    })
+    .refine((data) => data.password === data.confirm, {
+        message: "Passwords don't match",
+        path: ["confirm"], // path of error
+    });
 
 export const SignupForm: React.FC = () => {
     const { register, handleSubmit } = useForm<Inputs>();
@@ -18,7 +30,7 @@ export const SignupForm: React.FC = () => {
         <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
             <Input label="Email address" name="email" register={register} />
             <Input name="password" label="Password" type="password" register={register} />
-            <Input name="dubPassword" label="Repeat the password" type="password" register={register} />
+            <Input name="confirm" label="Repeat the password" type="password" register={register} />
             <div>
                 <button type="submit" className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
                     Sign in
