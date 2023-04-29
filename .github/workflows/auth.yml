@@ -7,8 +7,7 @@ on:
       - 'monorepo/auth/**'
 
     pull_request:
-      types:
-        - labeled
+      branches: [ main ]
       paths:
         - 'monorepo/auth/**'
 
@@ -18,7 +17,6 @@ defaults:
 
 jobs:
   build:
-    if: ${{ github.event.label.name == 'test in production' }}
     runs-on: ubuntu-latest
 
     steps:
