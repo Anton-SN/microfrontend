@@ -2,15 +2,8 @@ name: deploy-container
 
 on:
   push:
-    branches: [ main ]
     paths:
       - 'monorepo/container/**'
-
-    pull_request:
-      types: [synchronize, edited]
-      branches: [ main ]
-      paths:
-        - 'monorepo/container/**'
 
 defaults:
   run:

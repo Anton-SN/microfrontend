@@ -2,15 +2,8 @@ name: deploy-auth
 
 on:
   push:
-    branches: [ main ]
     paths:
       - 'monorepo/auth/**'
-
-    pull_request:
-      types: [synchronize, edited]
-      branches: [ main ]
-      paths:
-        - 'monorepo/auth/**'
 
 defaults:
   run:
