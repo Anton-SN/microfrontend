@@ -6,10 +6,10 @@ on:
     paths:
       - 'monorepo/container/**'
 
-    pull_request:
-      branches: [ main ]
-      paths:
-        - 'monorepo/container/**'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'monorepo/container/**'
 
 defaults:
   run:
