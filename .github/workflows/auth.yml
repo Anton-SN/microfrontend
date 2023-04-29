@@ -8,6 +8,7 @@ on:
 
     pull_request:
         branches: [ main ]
+        types: [synchronize]
         paths:
           - 'monorepo/auth/**'
 
@@ -25,6 +26,7 @@ jobs:
         uses: actions/checkout@v3
 
       - run: yarn
+      - run: yarn lint
       - run: yarn build
 
       - name: Configure AWS Credentials

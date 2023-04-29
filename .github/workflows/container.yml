@@ -8,8 +8,9 @@ on:
 
     pull_request:
       branches: [ main ]
+      types: [synchronize]
       paths:
-        - 'monorepo/auth/**'
+        - 'monorepo/container/**'
 
 defaults:
   run:
