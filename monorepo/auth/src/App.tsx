@@ -22,7 +22,7 @@ const App: React.FC<AppProps> = ({ onNavigate }) => {
                     }
                 };
                 window.addEventListener('[auth] navigated', navigationEventHandler);
-
+                console.log(123);
                 onNavigate(location.pathname)
 
                 return () => {
