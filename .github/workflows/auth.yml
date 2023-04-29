@@ -8,7 +8,7 @@ on:
 
     pull_request:
         branches: [ main ]
-        types: [synchronize]
+        types: [synchronize, edited]
         paths:
           - 'monorepo/auth/**'
 
