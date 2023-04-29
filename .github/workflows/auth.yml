@@ -7,10 +7,10 @@ on:
       - 'monorepo/auth/**'
 
     pull_request:
-        branches: [ main ]
-        types: [synchronize, edited]
-        paths:
-          - 'monorepo/auth/**'
+      types: [synchronize, edited]
+      branches: [ main ]
+      paths:
+        - 'monorepo/auth/**'
 
 defaults:
   run:

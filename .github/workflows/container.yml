@@ -7,8 +7,8 @@ on:
       - 'monorepo/container/**'
 
     pull_request:
-      branches: [ main ]
       types: [synchronize, edited]
+      branches: [ main ]
       paths:
         - 'monorepo/container/**'
 
