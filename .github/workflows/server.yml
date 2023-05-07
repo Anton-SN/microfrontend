@@ -5,24 +5,26 @@ on:
     branches: [ main, add-auth-server ]
     paths:
       - 'server/**'
-  workflow_dispatch:
+
+defaults:
+  run:
+    working-directory: 'server'
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v3
 
       - name: Set up Node.js version
         uses: actions/setup-node@v1
         with:
           node-version: '18.x'
 
-      - name: npm install, build, and test
-        run: |
-          yarn
-          yarn build
+      - run: yarn
+      - run: yarn build
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
