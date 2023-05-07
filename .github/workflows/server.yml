@@ -2,7 +2,9 @@ name: deploy-server-test
 
 on:
   push:
-    branches: [ main, add-auth-server ]
+    branches:
+      - main
+      - add-auth-server
     paths:
       - 'server/**'
 
@@ -16,7 +18,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
 
       - run: yarn
       - run: yarn build
