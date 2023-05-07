@@ -4,7 +4,7 @@ on:
   push:
     branches: [ main, add-auth-server ]
     paths:
-      - 'monorepo/server/**'
+      - 'server/**'
   workflow_dispatch:
 
 jobs:
