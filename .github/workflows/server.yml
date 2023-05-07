@@ -2,7 +2,7 @@ name: deploy-server
 
 on:
   push:
-    branches: [ main, add-auth-server ]
+    branches: [ main, 'add-auth-server' ]
     paths:
       - 'server/**'
 
